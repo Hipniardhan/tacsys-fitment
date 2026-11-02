@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Buka URL lokal yang dicetak Vite (default http://127.0.0.1:5173).
+Buka URL lokal yang dicetak Vite (http://127.0.0.1:5173/tacsys-fitment/).
 
 ```sh
 npm test
@@ -18,6 +18,16 @@ npm run preview
 ```
 
 Build produksi ada di `dist/`. Host sebagai static site.
+
+## Deploy ke GitHub Pages
+
+Di repository GitHub, buka **Settings → Pages → Build and deployment → Source → GitHub Actions**. Workflow `.github/workflows/deploy.yml` berjalan saat push ke `main` atau melalui **Actions → Deploy Vite to GitHub Pages → Run workflow**. Workflow menjalankan `npm ci`, `npm run build`, lalu mengunggah dan men-deploy hanya folder `dist/`.
+
+Vite memakai `base: '/tacsys-fitment/'`. Semua gambar public memakai helper `publicAsset` dengan `import.meta.env.BASE_URL` agar URL gambar mengikuti subfolder yang sama. Tidak ada React Router sehingga tidak diperlukan basename atau fallback route. JavaScript dan CSS hasil build otomatis mengikuti base Vite. Jangan men-deploy `index.html` source atau memilih root branch sebagai sumber Pages: source memuat `/src/main.jsx` yang belum dikompilasi.
+
+Workflow memeriksa `dist/index.html` sebelum upload dengan `node scripts/verify-build.mjs`: entry harus menunjuk JavaScript dan CSS production di `/tacsys-fitment/assets/`, tanpa referensi source React, dan semua aset harus tersedia. Hanya gunakan satu workflow deployment ini. Jika sebelumnya memakai **Deploy from a branch**, ubah Source ke **GitHub Actions** agar deployment bawaan branch tidak menerbitkan source root. Jangan menambahkan workflow Jekyll atau static HTML yang mengunggah direktori `.`. Concurrency `pages` membatasi deployment workflow ini agar tidak berjalan bersamaan.
+
+Untuk memeriksa build lokal, jalankan `npm run build` dan `npm run preview`, lalu buka `http://127.0.0.1:4173/tacsys-fitment/`. Jika nama repository diganti lagi, sesuaikan base Vite.
 
 ## Struktur
 
