@@ -13,4 +13,12 @@
 .footer-main .brand-logo .brand-image{width:248px;height:248px;left:-43px;top:-61px}
 @media(max-width:900px){.header-main .brand-logo{width:100px;height:70px}.header-main .brand-image{width:142px;height:142px;left:-24px;top:-35px}}
 @media(max-width:600px){.header-main .brand-logo{width:88px;height:62px}.header-main .brand-image{width:124px;height:124px;left:-21px;top:-30px}}
+.header-main .brand-with-text{display:flex;align-items:center;gap:14px;letter-spacing:normal;min-width:0}
+.brand-with-text>.brand-logo{flex-shrink:0}
+.navbar-brand-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.navbar-brand-title{font-size:22px;font-weight:800;line-height:1.15;color:#111827;white-space:nowrap}
+.navbar-brand-subtitle{font-size:11px;font-weight:400;line-height:1.4;color:#64707f}
+.header-main .header-actions{flex-shrink:0}
+@media(min-width:901px) and (max-width:1000px){.header-main .desktop-nav{display:none}.header-main .menu-button{display:flex;align-items:center;gap:7px;font-size:11px;min-height:44px}.header .mobile-nav{display:flex;flex-wrap:wrap;gap:8px;padding:10px 24px 18px;border-top:1px solid #eef0f3}.header .mobile-nav a{font-size:12px;padding:13px}}
+@media(max-width:600px){.header-main{gap:8px}.header-main .brand-with-text{flex:1;gap:12px}.header-main .brand-with-text .brand-logo{width:52px;height:40px}.header-main .brand-with-text .brand-image{width:74px;height:74px;left:-12px;top:-18px}.navbar-brand-copy{gap:3px}.navbar-brand-title{font-size:clamp(11px,3.3vw,16px)}.navbar-brand-subtitle{font-size:8px;line-height:1.35}.header-main .header-actions{gap:4px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
