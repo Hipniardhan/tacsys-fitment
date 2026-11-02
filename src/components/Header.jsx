@@ -1,7 +1,11 @@
 import { useState } from 'react';
-import { Menu, X, Search, ShoppingBag, Hexagon } from 'lucide-react';
+import { Menu, X, Search, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-export function Brand() { return <a href="#home" className="brand" aria-label="Tacsys Fitment beranda"><span className="brand-mark"><Hexagon size={32} strokeWidth={2.6}/><span/></span><span>TACSYS<strong>FITMENT</strong></span></a>; }
+import { publicAsset } from '../utils/assets';
+
+export function Brand() {
+  return <a href="#home" className="brand brand-logo" aria-label="Tacsys Fitment beranda"><img className="brand-image" src={publicAsset('/images/brand/logo-tacsys-fitment.png')} alt="TACSYS Automotive Workshop" width="500" height="500"/></a>;
+}
 export default function Header({ query, setQuery, onCart }) {
   const [open, setOpen] = useState(false), { count } = useCart();
   const links = [['Home', 'home'], ['Kategori', 'kategori'], ['Produk', 'produk'], ['Tentang Kami', 'tentang'], ['Kontak', 'kontak']];

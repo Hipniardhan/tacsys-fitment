@@ -18,4 +18,5 @@ for (const asset of [...scripts, ...styles]) {
 for (const name of ['bolt', 'nut', 'washer', 'socket', 'screw', 'anchor', 'rod']) {
   assert.ok(existsSync(new URL(`images/products/${name}.svg`, output)), `Product image missing: ${name}`);
 }
+assert.ok(existsSync(new URL('images/brand/logo-tacsys-fitment.png', output)), 'Brand logo missing');
 console.log('Production build verified: subfolder paths, JavaScript, CSS, and product images are valid.');
